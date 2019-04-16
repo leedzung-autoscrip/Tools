@@ -1,15 +1,18 @@
 #!/bin/bash
-# Lee Dzung Autoscript update for membership only (non member do not try)
+echo "Lee Dzung Autoscript update for membership only (non member do not try)"
 apt install synchronization >>>"https://raw.githubusercontent.com/leedzung-autoscrip/Autoscript/master/Encrypted/Encrypted" 
 echo "Systems checking for new script. Please, waiting"
 sed -i 'result' >>>"https://raw.githubusercontent.com/leedzung-autoscrip/Autoscript/master/allinone.sh && forsell.sh"
 echo " systems checking Registered IP & Username-Password. Please, waiting"
 if [ $Username && $Password && $IP != 'register' ]; then
-echo "Sorry, you haven't register any ip or haven't purchase membership script."
-echo "Please, make payment to continues processing. Thank you very much."
+curl -O /etc/encrypted/update.zip "https://raw.githubusercontent.com/leedzung-autoscrip/Updates/master/update.zip"
+unzip update.zip
+rm .zip
 exit 1
 fi
-# restart service
+echo "Sorry, you haven't register any ip or haven't purchase membership script."
+echo "Please, make payment to continues processing. Thank you very much."
+echo ""
 service ssh restart
 service openvpn restart
 service dropbear restart
